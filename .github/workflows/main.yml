@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Checkout the repository"
+      uses: actions/checkout@v2
+    - name: "Checkout submodules"
+      run: git submodule update --init --recursive
+    - name: "Generate build scripts as Unix Makefile"
+      run: cmake CMakeLists.txt
+    - name: "Build project"
+      run: make
