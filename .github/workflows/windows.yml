@@ -1,0 +1,12 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: "Run devenv"
+      run: |
+        $env:PATH = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\;.;$env:PATH"
+        devenv
